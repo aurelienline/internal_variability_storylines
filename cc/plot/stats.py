@@ -39,13 +39,13 @@ def boxplot(data, ax = None,
         data = [data]
 
     _ax = ax or matplotlib.pyplot.gca()
-    _size = numpy.shape(data)
+    _len = len(data)
 
-    _color = color or ['black' for i in range (0, _size[0])]
-    _edgecolor = edgecolor or ['black' for i in range (0, _size[0])]
-    _hatch = hatch or [None for i in range (0, _size[0])]
-    _label = label or ['' for i in range (0, _size[0])]
-    for i in range(0, _size[0]):
+    _color = color or ['black' for i in range (0, _len)]
+    _edgecolor = edgecolor or ['black' for i in range (0, _len)]
+    _hatch = hatch or [None for i in range (0, _len)]
+    _label = label or ['' for i in range (0, _len)]
+    for i in range(0, _len):
         _tmp = numpy.array(data[i])
         _weights = weights[i] if weights is not None else weights
         if len(numpy.shape(_tmp)) > 1:
@@ -54,14 +54,14 @@ def boxplot(data, ax = None,
             _weights = numpy.concatenate(_weights[i]) if weights is not None else None
         if len(_tmp) != 1:
             # compute statistics
-            _median = median(_tmp, weights=_weights)
-            _mean = mean(_tmp, weights=_weights)
-            _boxlow = quantile(_tmp, box/2, weights=_weights)
-            _boxhigh = quantile(_tmp, 1 - box/2, weights=_weights)
-            _low = quantile(_tmp, ext/2, weights=_weights)
-            _high = quantile(_tmp, 1 - ext/2, weights=_weights)
-            _minima = numpy.min(_tmp)
-            _maxima = numpy.max(_tmp)
+            _median = float(median(_tmp, weights=_weights))
+            _mean = float(mean(_tmp, weights=_weights))
+            _boxlow = float(quantile(_tmp, box/2, weights=_weights))
+            _boxhigh = float(quantile(_tmp, 1 - box/2, weights=_weights))
+            _low = float(quantile(_tmp, ext/2, weights=_weights))
+            _high = float(quantile(_tmp, 1 - ext/2, weights=_weights))
+            _minima = float(numpy.min(_tmp))
+            _maxima = float(numpy.max(_tmp))
             # plot
             _fill = True if _hatch[i] is None else None
             _x_data = [
@@ -88,12 +88,12 @@ def boxplot(data, ax = None,
                 _X = _x_data; _Y = _y_data;
                 _ax.add_patch(matplotlib.patches.Rectangle(
                     (dx + i - width / 2., _boxlow), width, _boxhigh - _boxlow,
-                    color = _color[i], edgecolor = _edgecolor[i], hatch = _hatch[i], fill = _fill, alpha = alpha)) # , ec = 'None'
+                    facecolor = _color[i], edgecolor = _edgecolor[i], hatch = _hatch[i], fill = _fill, alpha = alpha)) # , ec = 'None'
             elif orientation == 'horizontal':
                 _X = _y_data; _Y = _x_data;
                 _ax.add_patch(matplotlib.patches.Rectangle(
                     (_boxlow, dx + i - width / 2.), _boxhigh - _boxlow, width,
-                    color = _color[i], edgecolor = _edgecolor[i], hatch = _hatch[i], fill = _fill, alpha = alpha)) # , ec = 'None'
+                    facecolor = _color[i], edgecolor = _edgecolor[i], hatch = _hatch[i], fill = _fill, alpha = alpha)) # , ec = 'None'
 
             _ax.plot(_X[0], _Y[0], 'k', ls = '--', lw = 1.5)
             _ax.plot(_X[1], _Y[1], 'k',ls = '--', lw = 1.5)
@@ -121,14 +121,13 @@ def boxplot(data, ax = None,
             if extrema:
                 _ax.plot(_X[6], _Y[6], 'o', c=_color[i], markersize=markersize)
                 _ax.plot(_X[7], _Y[7], 'o', c=_color[i], markersize=markersize)
-                #matplotlib.pyplot.text(i, maxima, str(int(tmp.argmax())+1), c = _color[i])
 
     if orientation == 'vertical':
-        _ax.set_xticks(numpy.arange(_size[0]))
+        _ax.set_xticks(numpy.arange(_len))
         _ax.set_xticklabels(_label, rotation=rotation) # ,weight="bold"
         _ax.set_ylabel(yTitle) # ,weight="bold"
     elif orientation == 'horizontal':
-        _ax.set_yticks(numpy.arange(_size[0]))
+        _ax.set_yticks(numpy.arange(_len))
         _ax.set_yticklabels(_label, rotation=rotation) # ,weight="bold"
         _ax.set_xlabel(yTitle) # ,weight="bold"
 
