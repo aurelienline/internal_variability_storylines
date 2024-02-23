@@ -11,7 +11,7 @@ import matplotlib.pyplot
 # Local librairies
 from . import cmip6
 from . import util
-from .storylines import storylines
+#from .storylines import storylines
 from .plot.maps import maplot, plot_shape
 from .tools.field import check_lat_lon_names, field_avg, lon_flip, mask_land
 from .tools.time import get_season
@@ -58,7 +58,7 @@ __all__ = (
     'set_colors',
     'set_cmap',
     # Classes
-    'storylines'
+    #'storylines'
     # Exceptions
     # Constants
 )
