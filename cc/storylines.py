@@ -522,7 +522,7 @@ class storylines:
                     self.outputs.storindex.sel(driver = self.drivers_names[0]),
                     self.outputs.storindex.sel(driver = self.drivers_names[1]),
                     scale = .975*(scipy.stats.chi2.ppf(self.confidence, df = self.ndrivers) / 2.) ** (1 / self.ndrivers),
-                    ax = _ax, edgecolor = 'k', linewidth = .5, linestyle = '--')
+                    ax = _ax, edgecolor = 'k', linewidth = .5, linestyle = '--', zorder=3)
             if self.exclusion is not None:
                 confidence_ellipse(
                     self.outputs.storindex.sel(driver = self.drivers_names[0]),
@@ -543,15 +543,15 @@ class storylines:
                         mean(self.drivers[self.drivers_names[1]], weights=self.weights)]
 
             _ax.add_patch(matplotlib.pyplot.Polygon([_mdl_mdl, _mdl_rgt, _top_rgt, _top_mdl],
-                                                    color = _colors[0], fill = True, alpha = alpha, ec = 'None'))
+                                                    color = _colors[0], fill = True, alpha = alpha, ec = 'None', zorder = 1))
             #_legend.append(mpatches.Patch(color = storyColors[0], label = story[0])) #, alpha = polyAlpha
 
             _ax.add_patch(matplotlib.pyplot.Polygon([_mdl_mdl, _mdl_lft, _btm_lft, _btm_mdl],
-                                                    color = _colors[3], fill = True, alpha = alpha, ec = 'None'))
+                                                    color = _colors[3], fill = True, alpha = alpha, ec = 'None', zorder = 1))
             _ax.add_patch(matplotlib.pyplot.Polygon([_mdl_mdl, _btm_mdl, _btm_rgt, _mdl_rgt],
-                                                    color = _colors[1], fill = True, alpha = alpha, ec = 'None'))
+                                                    color = _colors[1], fill = True, alpha = alpha, ec = 'None', zorder = 1))
             _ax.add_patch(matplotlib.pyplot.Polygon([_mdl_mdl, _top_mdl, _top_lft, _mdl_lft],
-                                                    color = _colors[2], fill = True, alpha = alpha, ec = 'None'))
+                                                    color = _colors[2], fill = True, alpha = alpha, ec = 'None', zorder = 1))
 
 
 """
