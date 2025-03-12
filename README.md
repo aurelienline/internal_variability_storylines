@@ -1,6 +1,8 @@
 # Modulation of Northern Europe near-term anthropogenic warming and wettening assessed through internal variability storylines
-Aurélien Liné, Christophe Cassou, Rym Msadek, & Sylvie Parey 
+Aurélien Liné, Christophe Cassou, Rym Msadek, & Sylvie Parey
+
 _npj Climate and Atmospheric Science_ volume **7**, Article number: 272 (2024)
+
 https://doi.org/10.1038/s41612-024-00759-2
 
 I you are willing to execute these programs, you will need to execute the 'main' Jupyter Notebook first, as the storylines' groups are needed in the 'extreme events' Jupyter Notebook.
