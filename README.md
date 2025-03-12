@@ -1,5 +1,5 @@
 # Modulation of Northern Europe near-term anthropogenic warming and wettening assessed through internal variability storylines
-Aurélien Liné, Christophe Cassou, Rym Msadek, & Sylvie Parey
+Aurélien Liné, Christophe Cassou, Rym Msadek, Sylvie Parey
 
 _npj Climate and Atmospheric Science_ volume **7**, Article number: 272 (2024)
 
